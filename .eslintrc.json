@@ -1,0 +1,340 @@
+{
+    "root": true,
+    "env": {
+      "commonjs": true,
+      "es2021": true,
+      "es6": true,
+      "node": true,
+      "browser": true,
+      "jest": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings",
+      "plugin:import/typescript",
+      "plugin:prettier/recommended",
+      "plugin:sort-export-all/recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:typescript-sort-keys/recommended"
+    ],
+    "globals": {
+      "Atomics": "readonly",
+      "SharedArrayBuffer": "readonly"
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "project": "./tsconfig.*?.json",
+      "ecmaVersion": 12
+    },
+    "plugins": ["@nrwl/nx", "@typescript-eslint", "jest", "sort-destructure-keys", "unused-imports"],
+    "rules": {
+      "arrow-body-style": ["warn", "as-needed"],
+      "brace-style": ["error", "1tbs"],
+      "camelcase": [
+        "error",
+        {
+          "properties": "always"
+        }
+      ],
+      "comma-dangle": [
+        "error",
+        {
+          "arrays": "always-multiline",
+          "objects": "always-multiline",
+          "imports": "always-multiline",
+          "exports": "always-multiline",
+          "functions": "never"
+        }
+      ],
+      "comma-spacing": [
+        "error",
+        {
+          "before": false,
+          "after": true
+        }
+      ],
+      "curly": "error",
+      "default-case": "error",
+      "func-call-spacing": ["error", "never"],
+      "id-length": [
+        2,
+        {
+          "exceptions": ["t"]
+        }
+      ],
+      "import/no-duplicates": "error",
+      "import/no-extraneous-dependencies": "off",
+      "import/no-named-as-default": "off",
+      "import/no-unresolved": "error",
+      "import/order": [
+        "error",
+        {
+          "alphabetize": { "order": "asc", "caseInsensitive": true },
+          "newlines-between": "always"
+        }
+      ],
+      "import/prefer-default-export": "off",
+      "indent": [
+        "error",
+        2,
+        {
+          "SwitchCase": 1,
+          "VariableDeclarator": 1
+        }
+      ],
+      "keyword-spacing": [
+        "error",
+        {
+          "before": true,
+          "after": true,
+          "overrides": {
+            "if": {
+              "after": true
+            },
+            "else": {
+              "after": true
+            },
+            "import": {
+              "after": true
+            },
+            "from": {
+              "after": true
+            }
+          }
+        }
+      ],
+      "max-len": [
+        "error",
+        {
+          "code": 160,
+          "ignoreRegExpLiterals": true,
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true,
+          "ignoreUrls": true
+        }
+      ],
+      "max-statements": ["warn", 20],
+      "new-cap": [
+        "error",
+        {
+          "capIsNew": false
+        }
+      ],
+      "newline-after-var": ["error", "always"],
+      "no-await-in-loop": "error",
+      "no-bitwise": "off",
+      "no-console": [
+        "error",
+        {
+          "allow": [
+            "warn",
+            "dir",
+            "timeLog",
+            "assert",
+            "clear",
+            "count",
+            "countReset",
+            "info",
+            "group",
+            "groupEnd",
+            "table",
+            "dirxml",
+            "error",
+            "groupCollapsed",
+            "Console",
+            "profile",
+            "profileEnd",
+            "timeStamp",
+            "context"
+          ]
+        }
+      ],
+      "no-cond-assign": ["error", "always"],
+      "no-else-return": "error",
+      "no-extra-semi": "off",
+      "no-irregular-whitespace": "error",
+      "no-multi-spaces": "error",
+      "no-nested-ternary": "error",
+      "no-param-reassign": [
+        "error",
+        {
+          "ignorePropertyModificationsFor": ["el", "ref", "event"]
+        }
+      ],
+      "no-trailing-spaces": "error",
+      // Solved by rule unused-imports/no-unused-vars: https://github.com/sweepline/eslint-plugin-unused-imports
+      "no-unused-vars": "off",
+      "no-whitespace-before-property": "off",
+      "object-shorthand": ["error", "always"],
+      "object-curly-spacing": ["error", "always"],
+      "padding-line-between-statements": [
+        "error",
+        // Always require blank lines after directive (like 'use-strict'), except between directives
+        { "blankLine": "always", "prev": "directive", "next": "*" },
+        { "blankLine": "any", "prev": "directive", "next": "directive" },
+        // Always require blank lines after import, except between imports
+        { "blankLine": "always", "prev": "import", "next": "*" },
+        { "blankLine": "any", "prev": "import", "next": "import" },
+        // Always require blank lines before and after every sequence of variable declarations and export
+        {
+          "blankLine": "always",
+          "prev": "*",
+          "next": ["const", "let", "var", "export"]
+        },
+        {
+          "blankLine": "always",
+          "prev": ["const", "let", "var", "export"],
+          "next": "*"
+        },
+        {
+          "blankLine": "any",
+          "prev": ["const", "let", "var", "export"],
+          "next": ["const", "let", "var", "export"]
+        },
+        // Always require blank lines before and after class declaration, if, do/while, switch, try
+        {
+          "blankLine": "always",
+          "prev": "*",
+          "next": ["if", "class", "for", "do", "while", "switch", "try"]
+        },
+        {
+          "blankLine": "always",
+          "prev": ["if", "class", "for", "do", "while", "switch", "try"],
+          "next": "*"
+        },
+        // Always require blank lines before return statements
+        { "blankLine": "always", "prev": "*", "next": "return" }
+      ],
+      "prefer-template": "error",
+      "prettier/prettier": "error",
+      "quotes": [
+        "error",
+        "single",
+        {
+          "avoidEscape": true
+        }
+      ],
+      "space-before-function-paren": ["error", "never"],
+      "space-in-parens": ["error", "never"],
+      "space-infix-ops": "error",
+      "sort-destructure-keys/sort-destructure-keys": [2, { "caseSensitive": false }],
+      // Sort in grouped exports only not supported. See: https://github.com/jrdrg/eslint-plugin-sort-exports
+      // "sort-exports/sort-exports": ["warn", { "sortDir": "asc", "ignoreCase": true }],
+      "sort-imports": [
+        "error",
+        {
+          "ignoreCase": true,
+          "ignoreDeclarationSort": true,
+          "ignoreMemberSort": false,
+          "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+        }
+      ],
+      "sort-keys": ["warn", "asc", { "natural": true }],
+      "unused-imports/no-unused-imports": "error",
+      "unused-imports/no-unused-vars": ["error", { "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }],
+      "@typescript-eslint/array-type": "error",
+      "@typescript-eslint/ban-types": "off",
+      "@typescript-eslint/explicit-function-return-type": "error",
+      "@typescript-eslint/explicit-member-accessibility": "off",
+      "@typescript-eslint/explicit-module-boundary-types": "error",
+      "@typescript-eslint/no-empty-function": "off",
+      "@typescript-eslint/no-extra-semi": "off",
+      "@typescript-eslint/no-inferrable-types": "off",
+      "@typescript-eslint/no-parameter-properties": "off",
+      // Solved by rule unused-imports/no-unused-vars: https://github.com/sweepline/eslint-plugin-unused-imports
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/no-use-before-define": "off",
+      "@typescript-eslint/no-var-requires": "off",
+      "@typescript-eslint/semi": ["error"],
+      "@typescript-eslint/unified-signatures": "off"
+    },
+    "overrides": [
+      {
+        "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+        "rules": {
+          "@nrwl/nx/enforce-module-boundaries": [
+            "error",
+            {
+              "enforceBuildableLibDependency": true,
+              "allow": [],
+              "depConstraints": [
+                {
+                  "sourceTag": "*",
+                  "onlyDependOnLibsWithTags": ["*"]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "files": ["*.js", "*.jsx"],
+        "extends": ["plugin:@nrwl/nx/javascript"],
+        "rules": {}
+      },
+      {
+        "files": ["*.ts", "*.tsx"],
+        "extends": ["plugin:@nrwl/nx/typescript"],
+        "rules": {
+          "@typescript-eslint/explicit-function-return-type": [
+            "error",
+            {
+              "allowExpressions": false,
+              "allowTypedFunctionExpressions": true,
+              "allowHigherOrderFunctions": true
+            }
+          ],
+          "@typescript-eslint/explicit-member-accessibility": [
+            "error",
+            {
+              "accessibility": "explicit",
+              "overrides": {
+                "constructors": "off"
+              }
+            }
+          ],
+          "@typescript-eslint/naming-convention": [
+            "error",
+            // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/naming-convention.md#allowed-selectors-modifiers-and-types
+            // @TODO: review of selectors
+            {
+              "selector": ["class"],
+              "format": ["StrictPascalCase"]
+            },
+            {
+              "selector": ["enumMember"],
+              "format": ["StrictPascalCase"]
+            },
+            {
+              "selector": ["function"],
+              "format": ["PascalCase", "camelCase"]
+            },
+            {
+              "selector": ["interface"],
+              "format": ["PascalCase"]
+            }
+          ],
+          "@typescript-eslint/typedef": [
+            "error",
+            {
+              "parameter": false,
+              "variableDeclaration": false,
+              "variableDeclarationIgnoreFunction": true,
+              "call-signature": true,
+              "member-variable-declaration": true
+            }
+          ]
+        }
+      }
+    ],
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        }
+      }
+    }
+  }
+  

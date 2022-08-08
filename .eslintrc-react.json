@@ -1,0 +1,38 @@
+{
+    "extends": ["plugin:react/recommended", "plugin:react-hooks/recommended"],
+    "plugins": ["react"],
+    "rules": {
+      "jsx-quotes": ["error", "prefer-double"],
+      "react/jsx-boolean-value": ["error", "never"],
+      "react/jsx-first-prop-new-line": ["error", "multiline"],
+      "react/jsx-fragments": ["error", "syntax"],
+      "react/jsx-indent": ["error", 4],
+      "react/jsx-indent-props": ["error", 2],
+      "react/jsx-wrap-multilines": "error",
+      "react/no-string-refs": "error",
+      "react/react-in-jsx-scope": "off"
+    },
+    "overrides": [
+      {
+        "files": ["*.ts", "*.tsx"],
+        "extends": ["plugin:@nrwl/nx/typescript"],
+        "rules": {
+          "react/prop-types": "off",
+          "react/self-closing-comp": [
+            "error",
+            {
+              "component": true,
+              "html": true
+            }
+          ],
+          "@typescript-eslint/no-var-requires": "error"
+        }
+      }
+    ],
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    }
+  }
+  
